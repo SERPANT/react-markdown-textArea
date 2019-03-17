@@ -1,0 +1,34 @@
+.react-markdown-textarea .text-area {
+  min-width: 250px;
+}
+
+.div-text-area {
+  -webkit-appearance: textarea;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  flex-direction: column;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  border-width: 1px;
+  border-style: solid;
+  border-color: initial;
+  border-image: initial;
+  padding: 2px;
+
+  box-sizing: border-box;
+
+  font-family: monospace;
+  border-color: rgb(169, 169, 169);
+
+  min-width: 250px;
+  overflow-y: scroll;
+}
+
+.div-text-area p {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
