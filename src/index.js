@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 import MarkDownTextField from './MarkDownTextField';
 
-ReactDOM.render(<MarkDownTextField placeHolder="* aaaaaaaaaaaa hellow I am shreejit" />, document.getElementById('root'));
+ReactDOM.render(<MarkDownTextField />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
