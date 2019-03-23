@@ -17,9 +17,9 @@ class App extends Component {
     super(props);
     this.textAreaRef = React.createRef();
     this.divTextAreaRef = React.createRef();
-    const { width, height } = props;
+    const { width, height, defaultText } = props;
 
-    this.state = { isSelected: false, width: width || 256, height: height || 36, text: '' };
+    this.state = { isSelected: false, width: width || 256, height: height || 36, text: defaultText || '' };
   }
 
   /**
@@ -39,9 +39,9 @@ class App extends Component {
   };
 
   /**
-   * React Life Cycle method.
+   * Insert text into div element as inner html.
    */
-  componentDidUpdate = () => {
+  insertTextasInnerHtml() {
     const { isSelected, text } = this.state;
 
     if (!isSelected && text !== '') {
@@ -50,9 +50,30 @@ class App extends Component {
       return;
     }
 
+    this.insertPlaceHolderasInnerHtml();
+  }
+
+  /**
+   * Inserts placeholder into div element as inner html.
+   */
+  insertPlaceHolderasInnerHtml = () => {
     if (this.divTextAreaRef.current && this.props.placeHolder) {
       this.divTextAreaRef.current.innerHTML = `<p class="placeholder">${this.props.placeHolder}<p>`;
     }
+  }
+
+  /**
+   * React life Cycle method.
+   */
+  componentDidMount = () => {
+    this.insertTextasInnerHtml();
+  }
+
+  /**
+   * React Life Cycle method.
+   */
+  componentDidUpdate = () => {
+    this.insertTextasInnerHtml();
   };
 
   /**
@@ -148,6 +169,7 @@ App.propTypes = {
   cssStyle: PropTypes.object,
   cssClasses: PropTypes.string,
   onTextChange: PropTypes.func,
+  defaultText: PropTypes.string,
   placeHolder: PropTypes.string,
   onRemoveFocus: PropTypes.func,
 };
