@@ -28,6 +28,11 @@ class App extends Component {
     }
   };
 
+  onRemoveFoucus = () => {
+    this.setSize();
+    this.switchView();
+  }
+
   getView = () => {
     const { isSelected, height, width } = this.state;
 
@@ -38,10 +43,7 @@ class App extends Component {
           ref={this.textAreaRef}
           value={this.state.text}
           autoFocus="autoFocus"
-          onBlur={() => {
-            this.setSize();
-            this.switchView();
-          }}
+          onBlur={this.onRemoveFoucus}
           onChange={e => {
             this.setState({ text: e.target.value });
           }}
