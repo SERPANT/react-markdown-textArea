@@ -1,17 +1,29 @@
 import marked from 'marked';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import './app.css';
 
 /**
- * React mark-down textfield Component
+ * React mark-down textfield Component.
  */
 class App extends Component {
-  constructor() {
-    super();
+  /**
+   * Constructor.
+   * 
+   * @param {object} props
+   */
+  constructor(props) {
+    super(props);
     this.textAreaRef = React.createRef();
     this.divTextAreaRef = React.createRef();
     this.state = { isSelected: false, width: 256, height: 36, text: '' };
+  }
+
+  componentDidMount = () => {
+    const { placeHolder } = this.props;
+
+    this.setState({ text: placeHolder });
   }
 
   /**
@@ -49,7 +61,7 @@ class App extends Component {
     const { onRemoveFocus } = this.props;
 
     if (onRemoveFocus) {
-      onRemoveFocus(e)
+      onRemoveFocus(e);
     }
   }
 
@@ -69,13 +81,13 @@ class App extends Component {
   }
 
   /**
-   * 
+   * Returns inline style object.
    */
   getTextBoxStyleObj = () => {
     const { cssStyle } = this.props;
     const { height, width } = this.state;
 
-    return { width: `${width}px`, height: `${height}px`, ...cssStyle }
+    return { width: `${width}px`, height: `${height}px`, ...cssStyle };
   }
 
 
@@ -86,7 +98,7 @@ class App extends Component {
    */
   getView = () => {
     const { isSelected } = this.state;
-    const { cssClasses } = this.props
+    const { cssClasses } = this.props;
 
     const styleObj = this.getTextBoxStyleObj();
 
@@ -124,5 +136,13 @@ class App extends Component {
     return <div className="react-markdown-textarea">{currentView}</div>;
   }
 }
+
+App.propTypes = {
+  cssStyle: PropTypes.object,
+  cssClasses: PropTypes.string,
+  onTextChange: PropTypes.func,
+  placeHolder: PropTypes.string,
+  onRemoveFocus: PropTypes.func,
+};
 
 export default App;

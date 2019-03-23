@@ -6,7 +6,6 @@
         "browser": true
     },
     "extends": [
-        "prettier",
         "eslint:recommended",
         "eslint-config-leapfrog/react"
     ],
@@ -14,8 +13,5 @@
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
-    },
-    "plugins": [
-        "prettier"
-    ]
+    }
 }
