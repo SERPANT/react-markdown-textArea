@@ -17,13 +17,9 @@ class App extends Component {
     super(props);
     this.textAreaRef = React.createRef();
     this.divTextAreaRef = React.createRef();
-    this.state = { isSelected: false, width: 256, height: 36, text: '' };
-  }
+    const { width, height } = props;
 
-  componentDidMount = () => {
-    const { placeHolder } = this.props;
-
-    this.setState({ text: placeHolder });
+    this.state = { isSelected: false, width: width || 256, height: height || 36, text: '' };
   }
 
   /**
@@ -46,8 +42,16 @@ class App extends Component {
    * React Life Cycle method.
    */
   componentDidUpdate = () => {
-    if (!this.state.isSelected) {
-      this.divTextAreaRef.current.innerHTML = marked(this.state.text);
+    const { isSelected, text } = this.state;
+
+    if (!isSelected && text !== '') {
+      this.divTextAreaRef.current.innerHTML = marked(text);
+
+      return;
+    }
+
+    if (this.divTextAreaRef.current && this.props.placeHolder) {
+      this.divTextAreaRef.current.innerHTML = `<p class="placeholder">${this.props.placeHolder}<p>`;
     }
   };
 
@@ -98,7 +102,7 @@ class App extends Component {
    */
   getView = () => {
     const { isSelected } = this.state;
-    const { cssClasses } = this.props;
+    const { cssClasses, placeHolder } = this.props;
 
     const styleObj = this.getTextBoxStyleObj();
 
@@ -109,8 +113,9 @@ class App extends Component {
           autoFocus="autoFocus"
           ref={this.textAreaRef}
           value={this.state.text}
-          onChange={this.onTextChange}
+          placeholder={placeHolder}
           onBlur={this.onRemoveFocus}
+          onChange={this.onTextChange}
           className={`text-area ${cssClasses}`}
         />
       );
@@ -138,6 +143,8 @@ class App extends Component {
 }
 
 App.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
   cssStyle: PropTypes.object,
   cssClasses: PropTypes.string,
   onTextChange: PropTypes.func,
