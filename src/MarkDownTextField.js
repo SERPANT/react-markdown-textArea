@@ -8,6 +8,7 @@ import './app.css';
  * React mark-down textfield Component.
  */
 class MarkDownTextField extends Component {
+
   /**
    * Constructor.
    * 
@@ -15,11 +16,15 @@ class MarkDownTextField extends Component {
    */
   constructor(props) {
     super(props);
+
+    const defaultWidth = 256;
+    const defaultHeight = 96;
+
     this.textAreaRef = React.createRef();
     this.divTextAreaRef = React.createRef();
     const { width, height, defaultText } = props;
 
-    this.state = { isSelected: false, width: width || 256, height: height || 36, text: defaultText || '' };
+    this.state = { isSelected: false, width: width || defaultWidth, height: height || defaultHeight, text: defaultText || '' };
   }
 
   /**
