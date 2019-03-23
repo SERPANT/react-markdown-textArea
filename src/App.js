@@ -27,7 +27,7 @@ class App extends Component {
    * Toggles the isSelected flag.
    */
   switchView = () => {
-    this.setState({ isSelected: !this.state.isSelected });
+    this.setState((state) => ({ isSelected: !state.isSelected }));
   };
 
   /**
