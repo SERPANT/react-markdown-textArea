@@ -39,7 +39,7 @@ class App extends Component {
   };
 
   /**
-   * Insert text into div element as inner html.
+   * Insert text into div element as inner html or inserts placeholder.
    */
   insertTextasInnerHtml() {
     const { isSelected, text } = this.state;
@@ -57,8 +57,10 @@ class App extends Component {
    * Inserts placeholder into div element as inner html.
    */
   insertPlaceHolderasInnerHtml = () => {
-    if (this.divTextAreaRef.current && this.props.placeHolder) {
-      this.divTextAreaRef.current.innerHTML = `<p class="placeholder">${this.props.placeHolder}<p>`;
+    const { placeHolder } = this.props;
+
+    if (this.divTextAreaRef.current && placeHolder) {
+      this.divTextAreaRef.current.innerHTML = `<p class="placeholder">${placeHolder}<p>`;
     }
   }
 
