@@ -7,7 +7,7 @@ import './app.css';
 /**
  * React mark-down textfield Component.
  */
-class App extends Component {
+class MarkDownTextField extends Component {
   /**
    * Constructor.
    * 
@@ -165,7 +165,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+MarkDownTextField.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   cssStyle: PropTypes.object,
@@ -176,4 +176,4 @@ App.propTypes = {
   onRemoveFocus: PropTypes.func,
 };
 
-export default App;
+export default MarkDownTextField;
