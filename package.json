@@ -16,6 +16,20 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{md,yml,yaml,json}": [
+      "git add"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -27,6 +41,8 @@
   ],
   "devDependencies": {
     "eslint": "5.12.0",
-    "eslint-config-leapfrog": "^2.0.0-beta.0"
+    "eslint-config-leapfrog": "^2.0.0-beta.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5"
   }
 }
