@@ -8,10 +8,9 @@ import './app.css';
  * React mark-down textfield Component.
  */
 class MarkDownTextField extends Component {
-
   /**
    * Constructor.
-   * 
+   *
    * @param {object} props
    */
   constructor(props) {
@@ -24,7 +23,12 @@ class MarkDownTextField extends Component {
     this.divTextAreaRef = React.createRef();
     const { width, height, defaultText } = props;
 
-    this.state = { isSelected: false, width: width || defaultWidth, height: height || defaultHeight, text: defaultText || '' };
+    this.state = {
+      isSelected: false,
+      width: width || defaultWidth,
+      height: height || defaultHeight,
+      text: defaultText || ''
+    };
   }
 
   /**
@@ -40,7 +44,7 @@ class MarkDownTextField extends Component {
    * Toggles the isSelected flag.
    */
   switchView = () => {
-    this.setState((state) => ({ isSelected: !state.isSelected }));
+    this.setState(state => ({ isSelected: !state.isSelected }));
   };
 
   /**
@@ -67,14 +71,14 @@ class MarkDownTextField extends Component {
     if (this.divTextAreaRef.current && placeHolder) {
       this.divTextAreaRef.current.innerHTML = `<p class="placeholder">${placeHolder}<p>`;
     }
-  }
+  };
 
   /**
    * React life Cycle method.
    */
   componentDidMount = () => {
     this.insertTextasInnerHtml();
-  }
+  };
 
   /**
    * React Life Cycle method.
@@ -86,7 +90,7 @@ class MarkDownTextField extends Component {
   /**
    * @param {object} e : event object.
    */
-  onRemoveFocus = (e) => {
+  onRemoveFocus = e => {
     this.setSize();
     this.switchView();
 
@@ -95,14 +99,14 @@ class MarkDownTextField extends Component {
     if (onRemoveFocus) {
       onRemoveFocus(e);
     }
-  }
+  };
 
   /**
    * Performs some task if text changes in textfield.
-   * 
+   *
    * @param {object} e : event object.
    */
-  onTextChange = (e) => {
+  onTextChange = e => {
     this.setState({ text: e.target.value });
 
     const { onTextChange } = this.props;
@@ -110,7 +114,7 @@ class MarkDownTextField extends Component {
     if (onTextChange) {
       onTextChange(e);
     }
-  }
+  };
 
   /**
    * Returns inline style object.
@@ -120,12 +124,11 @@ class MarkDownTextField extends Component {
     const { height, width } = this.state;
 
     return { width: `${width}px`, height: `${height}px`, ...cssStyle };
-  }
-
+  };
 
   /**
    * Based on value of isSelected flag return JSX.
-   * 
+   *
    * @returns {JSX}
    */
   getView = () => {
@@ -159,7 +162,6 @@ class MarkDownTextField extends Component {
     );
   };
 
-
   /**
    * @returns {JSX}
    */
@@ -178,7 +180,7 @@ MarkDownTextField.propTypes = {
   onTextChange: PropTypes.func,
   defaultText: PropTypes.string,
   placeHolder: PropTypes.string,
-  onRemoveFocus: PropTypes.func,
+  onRemoveFocus: PropTypes.func
 };
 
 export default MarkDownTextField;
