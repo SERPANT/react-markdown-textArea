@@ -2,7 +2,7 @@ import marked from 'marked';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import './app.css';
+import './markDownTextField.css';
 
 /**
  * React mark-down textfield Component.
@@ -69,7 +69,7 @@ class MarkDownTextField extends Component {
     const { placeHolder } = this.props;
 
     if (this.divTextAreaRef.current && placeHolder) {
-      this.divTextAreaRef.current.innerHTML = `<p class="placeholder">${placeHolder}<p>`;
+      this.divTextAreaRef.current.innerHTML = `<p class="placeholder"}>${placeHolder}<p>`;
     }
   };
 
@@ -157,7 +157,7 @@ class MarkDownTextField extends Component {
         style={styleObj}
         ref={this.divTextAreaRef}
         onClick={this.switchView}
-        className={`div-text-area ${cssClasses}`}
+        className={`div-markdown-area ${cssClasses}`}
       />
     );
   };

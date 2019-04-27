@@ -1,5 +1,4 @@
-
-.div-text-area {
+.div-markdown-area {
   -webkit-appearance: textarea;
   background-color: white;
   -webkit-rtl-ordering: logical;
@@ -19,14 +18,13 @@
   overflow-y: scroll;
 }
 
-.div-text-area * {
+.div-markdown-area * {
   margin-block-end: 0;
   margin-block-start: 0;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
 
-
-.div-text-area .placeholder{
+.div-markdown-area .placeholder {
   color: gray;
 }
