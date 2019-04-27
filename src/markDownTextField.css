@@ -28,3 +28,7 @@
 .div-markdown-area .placeholder {
   color: gray;
 }
+
+.div-markdown-area::-webkit-scrollbar {
+  width: 7px;
+}
